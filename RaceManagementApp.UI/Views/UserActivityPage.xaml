@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="RaceManagementApp.UI.Views.UserActivityPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RaceManagementApp.UI.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls" 
+    xmlns:local1="using:RaceManagementApp.UI.ViewModels"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <!-- For Title -->
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <!-- For DataGrid -->
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Title -->
+        <TextBlock Text="User Activity Log" Style="{StaticResource TitleTextBlockStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" HorizontalAlignment="Center" Margin="0,20,0,20"/>
+
+        <!-- DataGrid -->
+        <controls:DataGrid ItemsSource="{Binding UserActionLog}" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                           AlternatingRowBackground = "LightBlue"  Height="Auto" MinHeight="200" MaxHeight="600">
+            <controls:DataGrid.Columns>
+                <controls:DataGridTextColumn Header="#ID" Binding="{Binding LogId}" />
+                <controls:DataGridTextColumn Header="User ID" Binding="{Binding UserId}" />
+                <controls:DataGridTextColumn Header="User Name" Binding="{Binding User.UserName}" />
+                <controls:DataGridTextColumn Header="Action Name" Binding="{Binding ActionName}" />
+                <controls:DataGridTextColumn Header="Action Timestamp" Binding="{Binding ActionTimestamp}" />
+            </controls:DataGrid.Columns>
+        </controls:DataGrid>
+    </Grid>
+</Page>

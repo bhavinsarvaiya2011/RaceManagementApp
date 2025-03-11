@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "RaceManagementApp.UI (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "RaceManagementApp.UI (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

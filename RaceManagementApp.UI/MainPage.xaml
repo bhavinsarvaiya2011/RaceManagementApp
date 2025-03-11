@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="RaceManagementApp.UI.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RaceManagementApp.UI"
+    xmlns:toolkit="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+
+        <!-- TabView at the top -->
+        <muxc:TabView Grid.Row="0" x:Name="MainTabView"
+                      IsAddTabButtonVisible="False"
+                      TabCloseRequested="MainTabView_TabCloseRequested"
+                      SelectionChanged="MainTabView_SelectionChanged">
+        </muxc:TabView>
+
+
+
+
+        <muxc:NavigationView Grid.Row="1" 
+                             x:Name="MainNavigationView" 
+                            SelectionChanged="SideMenu_SelectionChanged"
+                            IsBackEnabled="True"
+                            BackRequested="NavigationView_BackRequested"
+                             Background="{StaticResource SolidBackgroundFillColorSecondaryBrush}"
+                             OpenPaneLength="290" 
+                             IsSettingsVisible="False"
+                             PaneTitle="Race Management Apps" >
+            
+            <muxc:NavigationView.MenuItems>
+                <muxc:NavigationViewItem Icon="Home" Content="Dashboard" Tag="DashboardPage" x:Name="DashboardMenuItem" />
+
+                <muxc:NavigationViewItem Content="Users" Tag="UserPage" x:Name="ClientsMenuItem" >
+                    <muxc:NavigationViewItem.Icon>
+                        <muxc:FontIcon Glyph="&#xE13D;" Foreground="DarkGreen" />
+                    </muxc:NavigationViewItem.Icon>
+                </muxc:NavigationViewItem>
+
+
+                <muxc:NavigationViewItem Content="Activity" Tag="ActivityPage" x:Name="ActivityMenuItem" >
+                    <muxc:NavigationViewItem.Icon>
+                        <muxc:FontIcon Glyph="&#xE13D;" Foreground="DarkGreen" />
+                    </muxc:NavigationViewItem.Icon>
+                </muxc:NavigationViewItem>
+
+
+                <muxc:NavigationViewItemHeader Content="Activity Log" FontWeight="SemiLight" 
+                                               Foreground="DarkBlue" Height="36"/>
+
+                <muxc:NavigationViewItem Content="User Action Log" Tag="UserActivityPage" x:Name="UserActionLog" >
+                    <muxc:NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE929;" Foreground="DarkGreen" />
+                    </muxc:NavigationViewItem.Icon>
+                </muxc:NavigationViewItem>
+
+                <muxc:NavigationViewItem Content="System Action Log" Tag="SystemActivityPage" x:Name="SystemActionLog" >
+                    <muxc:NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE929;" Foreground="DarkGreen" />
+                    </muxc:NavigationViewItem.Icon>
+                </muxc:NavigationViewItem>
+
+            </muxc:NavigationView.MenuItems>
+            <Frame x:Name="MainContentFrame" Margin="4"/>
+        </muxc:NavigationView>
+    </Grid>
+    
+</Page>
